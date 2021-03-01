@@ -1,6 +1,13 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 export const GifGrid = ({ category }) => {
+
+    const [count, setCount] = useState(0);
+
+    // useEffect con un segundo argumento array vacío hace que este código solo se ejecute una vez
+    useEffect(() => {
+        getGifs();
+    }, [])
 
     const getGifs = async() => {
 
@@ -20,12 +27,12 @@ export const GifGrid = ({ category }) => {
 
     }
 
-    getGifs();
-
     return (
         <>
             
             <h3>{ category }</h3>
+            <h3>{ count }</h3>
+            <button onClick={ () => {setCount(count + 1)} }></button>
 
         </>
     )
