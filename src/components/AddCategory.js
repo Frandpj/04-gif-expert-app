@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types';
 
-export const AddCategory = () => {
+export const AddCategory = ({ setCategories }) => {
 
-    const [inputValue, setInputValue] = useState('Hola mundo');
+    const [inputValue, setInputValue] = useState(''); // Si se deja vacío es undefined y marca un warning, se puede poner un string vacío
     
     /* El input se queda con un valor asignado
     y esta función hace que se pueda cambiar ese valor */
@@ -13,16 +14,24 @@ export const AddCategory = () => {
     // Hace que el formulario funcione sin actualizar la página e imprime un mensaje
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Submit hecho');
+        if(inputValue.trim().length > 2) {
+            setCategories(cast => [...cast, inputValue]);
+            setInputValue('');
+        }
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={ handleSubmit }>
             <input 
                 type="text"
-                value={inputValue}
-                onChange={handleInputChange}
+                value={ inputValue }
+                onChange={ handleInputChange }
             />
         </form>
     )
+}
+
+// Hace que la función setCategories sea obligatoria para que el componente funcione
+AddCategory.propTypes = {
+    setCategories: PropTypes.func.isRequired,
 }

@@ -16,14 +16,14 @@ const GifExpertApp = () => {
     return (
         <>
             <h2>GifExpertApp</h2>
-            <AddCategory />
+            <AddCategory setCategories={ setCategories }/>
             <hr/>
 
             <ol>
                 {
                     categories.map((category, i) => {
 
-                        return <li key={category}>{category}</li>;
+                        return <li key={ category }>{ category }</li>;
 
                     })
                 }
