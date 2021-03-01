@@ -24,9 +24,9 @@ export const GifGrid = ({ category }) => {
 
     return (
         <>
-            <h3>{ category }</h3>
+            <h3 className="animate__animated animate__fadeIn">{ category }</h3>
             {/* Forma más corta de un if else, ya que solo se pone el if si sale bien */}
-            {loading && <p>Loading</p>}
+            {loading && <p className="animate__animated animate__flash">Loading</p>}
 
             <div className="card-grid">
                 {/* Tarea, imprimir lista con key = id y el titulo = title de la función getGifs  */}
