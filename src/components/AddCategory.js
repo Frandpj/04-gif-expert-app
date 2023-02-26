@@ -14,6 +14,9 @@ export const AddCategory = ({ setCategories }) => {
     // Hace que el formulario funcione sin actualizar la página e imprime un mensaje
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        // console.log('handleSubmit', inputValue);
+
         if(inputValue.trim().length > 2) {
             setCategories(cast => [inputValue, ...cast]);
             setInputValue('');
@@ -22,6 +25,7 @@ export const AddCategory = ({ setCategories }) => {
 
     return (
         <form onSubmit={ handleSubmit }>
+            <p>{inputValue}</p>
             <input 
                 type="text"
                 value={ inputValue }
